@@ -34,7 +34,7 @@ class PluginI18nTranslate_v1{
     /**
      * Retreive language.
      */
-    $language = wfArray::get($GLOBALS, 'sys/settings/i18n/language');
+    $language = wfI18n::getLanguage();
     if($language){
       /**
        * Check from theme.
