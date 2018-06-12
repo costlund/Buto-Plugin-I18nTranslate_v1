@@ -32,6 +32,17 @@ class PluginI18nTranslate_v1{
    */
   public function translateFromTheme($innerHTML, $replace = null){
     /**
+     * Path to translations files.
+     */
+    $path = '/theme/[theme]/i18n';
+    /**
+     * Check if path is changed via theme settings file.
+     */
+    $settings = wfPlugin::getPluginSettings('i18n/translate_v1', true);
+    if($settings->get('settings/path')){
+      $path = $settings->get('settings/path');
+    }
+    /**
      * Retreive language.
      */
     $language = wfI18n::getLanguage();
@@ -39,7 +50,7 @@ class PluginI18nTranslate_v1{
       /**
        * Check from theme.
        */
-      $filename = '/theme/[theme]/i18n/'.$language.'.yml';
+      $filename = $path.'/'.$language.'.yml';
       if(wfFilesystem::fileExist(wfArray::get($GLOBALS, 'sys/app_dir').$filename)){
         $temp = wfSettings::getSettings($filename);
         if($temp && isset($temp[$innerHTML])){
