@@ -31,6 +31,22 @@ class PluginI18nTranslate_v1{
    * Translate method.
    */
   public function translateFromTheme($innerHTML, $replace = null){
+    $data = $this->getData();
+    if($data && isset($data[$innerHTML])){
+      $innerHTML = $data[$innerHTML];
+    }
+    /**
+     * Replace.
+     */
+    if($replace){
+      foreach ($replace as $key => $value) {
+        $innerHTML = str_replace($key, $value, $innerHTML);
+      }
+    }
+    return $innerHTML;
+  }
+  public function getData(){
+    $data = null;
     /**
      * Path to translations files.
      */
@@ -39,7 +55,7 @@ class PluginI18nTranslate_v1{
      * Check if path is changed via theme settings file.
      */
     $settings = wfPlugin::getPluginSettings('i18n/translate_v1', true);
-    if($settings->get('settings/path')){
+    if($settings && $settings->get('settings/path')){
       $path = $settings->get('settings/path');
     }
     /**
@@ -52,20 +68,9 @@ class PluginI18nTranslate_v1{
        */
       $filename = $path.'/'.$language.'.yml';
       if(wfFilesystem::fileExist(wfArray::get($GLOBALS, 'sys/app_dir').$filename)){
-        $temp = wfSettings::getSettings($filename);
-        if($temp && isset($temp[$innerHTML])){
-          $innerHTML = $temp[$innerHTML];
-        }
+        $data = wfSettings::getSettings($filename);
       }
     }
-    /**
-     * Replace.
-     */
-    if($replace){
-      foreach ($replace as $key => $value) {
-        $innerHTML = str_replace($key, $value, $innerHTML);
-      }
-    }
-    return $innerHTML;
+    return $data;
   }
 }
