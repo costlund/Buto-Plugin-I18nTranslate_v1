@@ -31,7 +31,7 @@ class PluginI18nTranslate_v1{
    * Translate method.
    */
   public function translateFromTheme($innerHTML, $replace = null){
-    $data = $this->getData();
+    $data = $this->getData($innerHTML);
     if($data && isset($data[$innerHTML])){
       $innerHTML = $data[$innerHTML];
     }
@@ -45,7 +45,7 @@ class PluginI18nTranslate_v1{
     }
     return $innerHTML;
   }
-  public function getData(){
+  public function getData($innerHTML){
     $data = null;
     /**
      * Path to translations files.
@@ -70,7 +70,31 @@ class PluginI18nTranslate_v1{
       if(wfFilesystem::fileExist(wfArray::get($GLOBALS, 'sys/app_dir').$filename)){
         $data = wfSettings::getSettings($filename);
       }
+      if(wfConfig::get('plugin/i18n/translate_v1/settings/log')){
+        if(is_null($data)){
+          $this->log($path, $language, 'file_missing', $innerHTML);
+        }elseif(!isset($data[$innerHTML])){
+          $this->log($path, $language, 'key_missing', $innerHTML);
+        }
+      }
     }
     return $data;
+  }
+  /**
+   * Log issues.
+   * @param type $path
+   * @param type $language
+   * @param type $type
+   * @param type $innerHTML
+   * @return type
+   */
+  private function log($path, $language, $type, $innerHTML){
+    wfPlugin::includeonce('wf/yml');
+    $filename = 'log_'.date('ymd').'.yml';
+    $logfile = new PluginWfYml(wfGlobals::getAppDir().$path.'/'.$filename);
+    $array = array('la' => $language, 'time' => date('Y-m-d H:i:s'), 'type' => $type, 'innerHTML' => $innerHTML);
+    $logfile->set(wfCrypt::getUid(), $array);
+    $logfile->save();
+    return null;
   }
 }
