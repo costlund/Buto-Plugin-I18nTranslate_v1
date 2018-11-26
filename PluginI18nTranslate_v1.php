@@ -4,13 +4,16 @@ class PluginI18nTranslate_v1{
    <p>Set in param events/document_render_string in theme settings.yml.</p>
    */
   public static function event_translate_string($value, $string){
-    if(is_numeric($string)){
+    if(is_numeric(str_replace(array('.', '-'), '', $string))){
       return $string;
     }
     if(strstr($string, '<')){
       return $string;
     }
     if(strstr($string, 'item[{')){
+      return $string;
+    }
+    if(strstr($string, "\n")){
       return $string;
     }
     $i18n = new PluginI18nTranslate_v1();
