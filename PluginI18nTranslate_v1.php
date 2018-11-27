@@ -113,7 +113,7 @@ class PluginI18nTranslate_v1{
     wfPlugin::includeonce('wf/yml');
     $filename = $language.'_log.yml';
     $logfile = new PluginWfYml(wfGlobals::getAppDir().$path.'/'.$filename);
-    $logfile->set($innerHTML.'/', date('ymd H:i:s'));
+    $logfile->set($innerHTML, '');
     $logfile->save();
     return null;
   }
