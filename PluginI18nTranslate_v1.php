@@ -7,6 +7,9 @@ class PluginI18nTranslate_v1{
     if(is_numeric(str_replace(array('.', '-'), '', $string))){
       return $string;
     }
+    if(strlen($string)<2){
+      return $string;
+    }
     if(strstr($string, '<')){
       return $string;
     }
@@ -100,6 +103,13 @@ class PluginI18nTranslate_v1{
    * @return null
    */
   private function log($path, $language, $innerHTML){
+    /**
+     * Replace slash.
+     */
+    $innerHTML = str_replace('/', '%slash%', $innerHTML);
+    /**
+     * 
+     */
     wfPlugin::includeonce('wf/yml');
     $filename = $language.'_log.yml';
     $logfile = new PluginWfYml(wfGlobals::getAppDir().$path.'/'.$filename);
