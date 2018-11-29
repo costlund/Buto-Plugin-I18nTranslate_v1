@@ -49,3 +49,12 @@ settings:
       disabled: true
 innerHTML: 'globals:sys/page/settings/title'
 ```
+
+<p>Or.</p>
+
+```
+type: title
+settings:
+  i18n: false
+innerHTML: 'globals:sys/page/settings/title'
+```
