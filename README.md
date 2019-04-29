@@ -66,3 +66,12 @@ innerHTML: 'globals:sys/page/settings/title'
 $GLOBALS = wfArray::setUnset($GLOBALS, 'sys/settings/events/document_render_string');
 ```
 
+## PHP
+Set optional path to override theme folder.
+```
+wfPlugin::includeonce('i18n/translate_v1');
+$i18n = new PluginI18nTranslate_v1();
+$i18n->path = '/plugin/_path_/_to_/_folder_';
+echo $i18n->translateFromTheme('Hello World');
+
+```

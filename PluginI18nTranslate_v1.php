@@ -1,5 +1,6 @@
 <?php
 class PluginI18nTranslate_v1{
+  public $path = null;
   /**
    <p>Set in param events/document_render_string in theme settings.yml.</p>
    */
@@ -82,6 +83,9 @@ class PluginI18nTranslate_v1{
     return $data;
   }
   private function getPath(){
+    if($this->path){
+      return $this->path;
+    }
     /**
      * Path to translations files.
      */
