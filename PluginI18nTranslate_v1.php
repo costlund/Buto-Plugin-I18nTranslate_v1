@@ -121,4 +121,7 @@ class PluginI18nTranslate_v1{
     $logfile->save();
     return null;
   }
+  public function set_path($path){
+    $GLOBALS['sys']['settings']['plugin']['i18n']['translate_v1']['settings']['path'] = $path;
+  }
 }
