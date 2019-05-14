@@ -13,6 +13,7 @@
 </ul>
 <p>This settings in theme settings.yml along with event settings. Check values to turn on log.</p>
 
+## Event
 ```
 events:
   document_render_string:
@@ -21,6 +22,7 @@ events:
       method: translate_string
 
 ```
+## Theme settings.
 ```
 i18n:
   language: fi
@@ -32,13 +34,14 @@ plugin:
         log_domain_filter: 'localhost'
 
 ```
-
+## Translation file
 <p>This in fi.yml</p>
 
 ```
 About: Noin
 ```
 
+## Dismiss translation for an element
 <p>To avoid tranlation for an element set settings/event/document_render_string/disabled to true.</p>
 
 ```
@@ -49,7 +52,6 @@ settings:
       disabled: true
 innerHTML: 'globals:sys/page/settings/title'
 ```
-
 <p>Or.</p>
 
 ```
@@ -59,7 +61,7 @@ settings:
 innerHTML: 'globals:sys/page/settings/title'
 ```
 
-
+## Unset
 <p>Unset i18n event for a plugin module.</p>
 
 ```
@@ -74,4 +76,13 @@ $i18n = new PluginI18nTranslate_v1();
 $i18n->path = '/plugin/_path_/_to_/_folder_';
 echo $i18n->translateFromTheme('Hello World');
 
+```
+
+## Globals
+One could set path in globals for a plugin. In this example we handle it in __construct method.
+
+```
+if(wfGlobals::get('class')=='invoice'){
+  wfGlobals::set('settings/plugin/i18n/translate_v1/settings/path', '/plugin/invoice/invoice_v1/i18n');
+}
 ```

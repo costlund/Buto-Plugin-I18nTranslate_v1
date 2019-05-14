@@ -1,5 +1,8 @@
-version: '1.4'
+version: '1.5'
 history:
+  '1.5':
+    date: '2019-05-14' 
+    description: Set path in Globals.
   '1.4':
     date: '2019-04-29' 
     description: Path to files.

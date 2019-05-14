@@ -83,8 +83,17 @@ class PluginI18nTranslate_v1{
     return $data;
   }
   private function getPath(){
+    /**
+     * Path is set in other plugin via object mode.
+     */
     if($this->path){
       return $this->path;
+    }
+    /**
+     * Path is set in other plugin via Globals.
+     */
+    if(wfGlobals::get('settings/plugin/i18n/translate_v1/settings/path')){
+      return wfGlobals::get('settings/plugin/i18n/translate_v1/settings/path');
     }
     /**
      * Path to translations files.
