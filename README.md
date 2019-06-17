@@ -86,3 +86,15 @@ if(wfGlobals::get('class')=='invoice'){
   wfGlobals::set('settings/plugin/i18n/translate_v1/settings/path', '/plugin/invoice/invoice_v1/i18n');
 }
 ```
+
+## Element
+
+One could use settings/globals to override globals for an element. By doing so it is possible to set other i18n folder instead of the one located in theme.
+
+```
+settings:
+  globals:
+    -
+      path_to_key: 'settings/plugin/i18n/translate_v1/settings/path'
+      value: '/plugin/_folder_/_folder_/i18n'
+```
