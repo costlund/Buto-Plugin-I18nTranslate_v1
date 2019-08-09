@@ -23,6 +23,9 @@ events:
 
 ```
 ## Theme settings.
+
+Set disabled to true to turn off translation.
+
 ```
 i18n:
   language: fi
@@ -32,6 +35,7 @@ plugin:
       settings:
         log: true
         log_domain_filter: 'localhost'
+        disabled: false
 
 ```
 ## Translation file
@@ -67,6 +71,22 @@ innerHTML: 'globals:sys/page/settings/title'
 ```
 $GLOBALS = wfArray::setUnset($GLOBALS, 'sys/settings/events/document_render_string');
 ```
+
+Unset for an element and it´s child elements.
+
+```
+type: tbody
+settings:
+  globals:
+    -
+      path_to_key: 'settings/plugin/i18n/translate_v1/settings/disabled'
+      value: true
+innerHTML:
+  -
+    type: tr
+    innerHTML: 'td elements...'
+```
+
 
 ## PHP
 Set optional path to override theme folder.

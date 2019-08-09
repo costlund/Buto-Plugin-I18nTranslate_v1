@@ -28,6 +28,15 @@ class PluginI18nTranslate_v1{
    * Translate method.
    */
   public function translateFromTheme($innerHTML, $replace = null){
+    /**
+     * Skip translation.
+     */
+    if(wfGlobals::get('settings/plugin/i18n/translate_v1/settings/disabled')==true){
+      return $innerHTML;
+    }
+    /**
+     * 
+     */
     $data = $this->getData($innerHTML);
     if($data && isset($data[$innerHTML])){
       $innerHTML = $data[$innerHTML];
