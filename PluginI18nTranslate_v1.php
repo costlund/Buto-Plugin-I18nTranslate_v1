@@ -91,7 +91,7 @@ class PluginI18nTranslate_v1{
     }
     return $data;
   }
-  private function getPath(){
+  public function getPath(){
     /**
      * Path is set in other plugin via object mode.
      */
@@ -141,5 +141,12 @@ class PluginI18nTranslate_v1{
   }
   public function set_path($path){
     $GLOBALS['sys']['settings']['plugin']['i18n']['translate_v1']['settings']['path'] = $path;
+  }
+  public function get_path(){
+    if(isset($GLOBALS['sys']['settings']['plugin']['i18n']['translate_v1']['settings']['path'])){
+      return $GLOBALS['sys']['settings']['plugin']['i18n']['translate_v1']['settings']['path'];
+    }else{
+      return null;
+    }
   }
 }
