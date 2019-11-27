@@ -118,6 +118,13 @@ class PluginI18nTranslate_v1{
     return $path;
   }
   /**
+   * Set current path for this object.
+   * @param string $path
+   */
+  public function setPath($path){
+    $this->path = $path;
+  }
+  /**
    * Log when no match.
    * @param string $path
    * @param string $language
@@ -139,6 +146,9 @@ class PluginI18nTranslate_v1{
     $logfile->save();
     return null;
   }
+  /**
+   * Use this only if you want to change path in Globals param. Use ->path instead for only this object.
+   */
   public function set_path($path){
     $GLOBALS['sys']['settings']['plugin']['i18n']['translate_v1']['settings']['path'] = $path;
   }
