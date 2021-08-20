@@ -1,5 +1,9 @@
-version: '1.7.0'
+version: '1.7.1'
 history:
+  '1.7.1':
+    date: '2021-08-20' 
+    title: Character
+    description: 'Skip translate if first character is &.'
   '1.7.0':
     date: '2019-11-27' 
     title: Path

@@ -20,6 +20,9 @@ class PluginI18nTranslate_v1{
     if(strstr($string, "\n")){
       return $string;
     }
+    if(substr($string, 0, 1)=='&'){
+      return $string;
+    }
     $i18n = new PluginI18nTranslate_v1();
     $string = $i18n->translateFromTheme($string);
     return $string;
