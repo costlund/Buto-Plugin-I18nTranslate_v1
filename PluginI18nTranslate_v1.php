@@ -135,6 +135,9 @@ class PluginI18nTranslate_v1{
    * @return null
    */
   private function log($path, $language, $innerHTML){
+    if(!$innerHTML){
+      return null;
+    }
     /**
      * Replace slash.
      */

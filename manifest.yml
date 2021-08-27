@@ -1,5 +1,9 @@
-version: '1.7.1'
+version: '1.7.2'
 history:
+  '1.7.2':
+    date: '2021-08-26' 
+    title: I18N
+    description: 'Skip log if innerHTML is empty.'
   '1.7.1':
     date: '2021-08-20' 
     title: Character
