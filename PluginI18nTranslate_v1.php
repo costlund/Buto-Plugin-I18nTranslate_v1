@@ -5,27 +5,29 @@ class PluginI18nTranslate_v1{
    <p>Set in param events/document_render_string in theme settings.yml.</p>
    */
   public static function event_translate_string($value, $string){
-    if(is_numeric(str_replace(array('.', '-'), '', $string))){
-      return $string;
-    }
-    if(strlen($string)<2){
-      return $string;
-    }
-    if(strstr($string, '<')){
-      return $string;
-    }
-    if(strstr($string, 'item[{')){
-      return $string;
-    }
-    if(strstr($string, "\n")){
-      return $string;
-    }
-    if(substr($string, 0, 1)=='&'){
+    if(PluginI18nTranslate_v1::event_translate_string_issue($string)){
       return $string;
     }
     $i18n = new PluginI18nTranslate_v1();
     $string = $i18n->translateFromTheme($string);
     return $string;
+  }
+  public static function event_translate_string_issue($string){
+    if(is_numeric(str_replace(array('.', '-'), '', $string))){
+      return true;
+    }elseif(strlen($string)<2){
+      return true;
+    }elseif(strstr($string, '<')){
+      return true;
+    }elseif(strstr($string, 'item[{')){
+      return true;
+    }elseif(strstr($string, "\n")){
+      return true;
+    }elseif(substr($string, 0, 1)=='&'){
+      return true;
+    }else{
+      return false;
+    }
   }
   /**
    * Translate method.
@@ -135,7 +137,9 @@ class PluginI18nTranslate_v1{
    * @return null
    */
   private function log($path, $language, $innerHTML){
-    if(!$innerHTML){
+    /**
+     */
+    if($this->log_issue($innerHTML)){
       return null;
     }
     /**
@@ -151,6 +155,15 @@ class PluginI18nTranslate_v1{
     $logfile->set($innerHTML, '');
     $logfile->save();
     return null;
+  }
+  private function log_issue($innerHTML){
+    if(!$innerHTML){
+      return true;
+    }elseif(strstr($innerHTML, "'")){
+      return true;
+    }else{
+      return false;
+    }
   }
   /**
    * Use this only if you want to change path in Globals param. Use ->path instead for only this object.

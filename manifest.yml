@@ -1,5 +1,9 @@
-version: '1.7.2'
+version: '1.7.3'
 history:
+  '1.7.3':
+    date: '2021-09-30' 
+    title: I18N
+    description: "Skip log if innerHTML has (')."
   '1.7.2':
     date: '2021-08-26' 
     title: I18N
