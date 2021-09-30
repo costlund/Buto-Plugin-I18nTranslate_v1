@@ -15,7 +15,7 @@ class PluginI18nTranslate_v1{
   public static function event_translate_string_issue($string){
     if(is_numeric(str_replace(array('.', '-'), '', $string))){
       return true;
-    }elseif(strlen($string)<2){
+    }elseif(strlen($string)<=2){
       return true;
     }elseif(strstr($string, '<')){
       return true;
@@ -24,6 +24,10 @@ class PluginI18nTranslate_v1{
     }elseif(strstr($string, "\n")){
       return true;
     }elseif(substr($string, 0, 1)=='&'){
+      return true;
+    }elseif(strtotime(substr($string, 0, 10))){
+      return true;
+    }elseif(filter_var($string, FILTER_VALIDATE_EMAIL)){
       return true;
     }else{
       return false;
