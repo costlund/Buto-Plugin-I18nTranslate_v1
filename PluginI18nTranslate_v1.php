@@ -5,9 +5,6 @@ class PluginI18nTranslate_v1{
    <p>Set in param events/document_render_string in theme settings.yml.</p>
    */
   public static function event_translate_string($value, $string){
-    if(PluginI18nTranslate_v1::event_translate_string_issue($string)){
-      return $string;
-    }
     $i18n = new PluginI18nTranslate_v1();
     $string = $i18n->translateFromTheme($string);
     return $string;
@@ -29,6 +26,8 @@ class PluginI18nTranslate_v1{
       return true;
     }elseif(filter_var($string, FILTER_VALIDATE_EMAIL)){
       return true;
+    }elseif(substr($string, 0, 5)=='load:'){
+      return true;
     }else{
       return false;
     }
@@ -41,6 +40,12 @@ class PluginI18nTranslate_v1{
      * Skip translation.
      */
     if(wfGlobals::get('settings/plugin/i18n/translate_v1/settings/disabled')==true){
+      return $innerHTML;
+    }
+    /**
+     * 
+     */
+    if(PluginI18nTranslate_v1::event_translate_string_issue($innerHTML)){
       return $innerHTML;
     }
     /**

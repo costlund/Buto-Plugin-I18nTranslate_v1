@@ -118,3 +118,11 @@ settings:
       path_to_key: 'settings/plugin/i18n/translate_v1/settings/path'
       value: '/plugin/_folder_/_folder_/i18n'
 ```
+
+## Disable
+One could disable in php.
+````
+function __construct() {
+  wfGlobals::set('settings/plugin/i18n/translate_v1/settings/disabled', true);
+}
+````
