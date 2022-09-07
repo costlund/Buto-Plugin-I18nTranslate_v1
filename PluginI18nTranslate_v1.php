@@ -22,7 +22,7 @@ class PluginI18nTranslate_v1{
       return true;
     }elseif(substr($string, 0, 1)=='&'){
       return true;
-    }elseif(strtotime(substr($string, 0, 10))){
+    }elseif(is_numeric(substr($string, 0, 1)) && strtotime(substr($string, 0, 10))){
       return true;
     }elseif(filter_var($string, FILTER_VALIDATE_EMAIL)){
       return true;
@@ -45,9 +45,21 @@ class PluginI18nTranslate_v1{
     /**
      * 
      */
+
+    if($innerHTML=='July'){
+      // wfHelp::print(PluginI18nTranslate_v1::event_translate_string_issue($innerHTML));
+      // exit($innerHTML);
+    }
+
     if(PluginI18nTranslate_v1::event_translate_string_issue($innerHTML)){
       return $innerHTML;
     }
+
+    // if($innerHTML=='July'){
+    //   exit($innerHTML);
+    // }
+
+
     /**
      * 
      */
@@ -94,6 +106,10 @@ class PluginI18nTranslate_v1{
      * Retreive language.
      */
     $language = wfI18n::getLanguage();
+    // if($innerHTML=='July'){
+    //   exit('dkf');
+    //   exit($language);
+    // }
     if($language){
       /**
        * Check from theme.
