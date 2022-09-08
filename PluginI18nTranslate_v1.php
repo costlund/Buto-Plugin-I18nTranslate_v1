@@ -63,7 +63,7 @@ class PluginI18nTranslate_v1{
     /**
      * 
      */
-    $data = $this->getData($innerHTML);
+    $data = $this->getData();
     if($data && isset($data[$innerHTML])){
       $innerHTML = $data[$innerHTML];
     }elseif($data){
@@ -93,23 +93,21 @@ class PluginI18nTranslate_v1{
     return $innerHTML;
   }
   /**
-   * Get all translations for one language.
+   * Get all translations for a language.
    * @return array
    */
-  public function getData($innerHTML = null){
+  public function getData($language = null){
     $data = null;
     /**
      * Path to translations files.
      */
     $path = $this->getPath();
     /**
-     * Retreive language.
+     * Retreive language if not set.
      */
-    $language = wfI18n::getLanguage();
-    // if($innerHTML=='July'){
-    //   exit('dkf');
-    //   exit($language);
-    // }
+    if(!$language){
+      $language = wfI18n::getLanguage();
+    }
     if($language){
       /**
        * Check from theme.
