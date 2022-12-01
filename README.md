@@ -22,6 +22,14 @@ events:
       method: translate_string
 
 ```
+Translate title element with hyphen between "One - Two".
+```
+events:
+  document_render_string:
+    -
+      plugin: i18n/translate_v1
+      method: translate_title
+```
 ## Theme settings.
 
 Set disabled to true to turn off translation.

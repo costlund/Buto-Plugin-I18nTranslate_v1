@@ -9,6 +9,22 @@ class PluginI18nTranslate_v1{
     $string = $i18n->translateFromTheme($string);
     return $string;
   }
+  public function event_translate_title($event, $data){
+    if(isset($data['innerHTML'])){
+      $i18n = new PluginI18nTranslate_v1();
+      /**
+       * 
+       */
+      $array = preg_split("/ - /", $data['innerHTML']);
+      $str = null;
+      foreach($array as $k => $v){
+        $str .= ' - '.$i18n->translateFromTheme($v);
+      }
+      $data['innerHTML'] = substr($str, 3);
+      $data['settings']['i18n'] = false;
+    }
+    return $data;
+  }
   public static function event_translate_string_issue($string){
     if(is_numeric(str_replace(array('.', '-'), '', $string))){
       return true;
