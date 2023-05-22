@@ -134,3 +134,18 @@ function __construct() {
   wfGlobals::set('settings/plugin/i18n/translate_v1/settings/disabled', true);
 }
 ````
+
+## Links
+Put file _links.yml in i18n folder.
+Text matching keys will be replaced to links.
+````
+world.com:
+  href: https://world.com
+  target: _blank
+com:
+  href: https://com.com
+  target: _blank
+````
+Note than in above example key world.com must become before key com.
+
+

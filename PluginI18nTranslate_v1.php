@@ -4,9 +4,31 @@ class PluginI18nTranslate_v1{
   /**
    <p>Set in param events/document_render_string in theme settings.yml.</p>
    */
-  public static function event_translate_string($value, $string){
+  public static function event_translate_string($value, $string, $element){
     $i18n = new PluginI18nTranslate_v1();
     $string = $i18n->translateFromTheme($string);
+    /**
+     * Make links.
+     */
+    $scramble = '€€€€';
+    if( in_array($element['type'], array('p', 'div')) && isset($element['innerHTML']) && !is_array($element['innerHTML'])){
+      $links = $i18n->getLinks();
+      foreach($links as $k => $v){
+        $href = '/';
+        $target = '';
+        if(isset($v['href'])){
+          $href = $v['href'];
+        }
+        if(isset($v['target'])){
+          $target = ' target="'.$v['target'].'"';
+        }
+        $string = str_replace($k, '<a href="'.$href.'"'.$target.'>'.substr($k, 0, 1).$scramble.substr($k, 1).'</a>', $string);
+      }
+      $string = str_replace($scramble, '', $string);
+    }
+    /**
+     * 
+     */
     return $string;
   }
   public function event_translate_title($event, $data){
@@ -134,6 +156,15 @@ class PluginI18nTranslate_v1{
       }
     }
     return $data;
+  }
+  private function getLinks(){
+    $path = $this->getPath();
+    $filename = $path.'/_links.yml';
+    $links = array();
+    if(wfFilesystem::fileExist(wfArray::get($GLOBALS, 'sys/app_dir').$filename)){
+      $links = wfSettings::getSettings($filename);
+    }
+    return $links;
   }
   public function getPath(){
     /**
