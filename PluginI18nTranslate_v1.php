@@ -11,7 +11,7 @@ class PluginI18nTranslate_v1{
      * Make links.
      */
     $scramble = '€€€€';
-    if( in_array($element['type'], array('p', 'div')) && isset($element['innerHTML']) && !is_array($element['innerHTML'])){
+    if( in_array($element['type'], array('p', 'div', 'li')) && isset($element['innerHTML']) && !is_array($element['innerHTML'])){
       $links = $i18n->getLinks();
       foreach($links as $k => $v){
         $href = '/';
