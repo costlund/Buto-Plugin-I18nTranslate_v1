@@ -148,4 +148,10 @@ com:
 ````
 Note than in above example key world.com must become before key com.
 
+Works on following elements.
+- p
+- div
+- li
+- span
+
 

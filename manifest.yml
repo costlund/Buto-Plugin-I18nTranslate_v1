@@ -1,5 +1,9 @@
-version: 1.11.0
+version: 1.12.0
 history:
+  1.12.0:
+    date: '2023-07-28' 
+    title: 'Link element'
+    description: 'Add span element to link elements in method event_translate_string.'
   1.11.0:
     date: '2023-05-22' 
     title: 'Links'
