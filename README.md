@@ -77,7 +77,7 @@ innerHTML: 'globals:sys/page/settings/title'
 <p>Unset i18n event for a plugin module.</p>
 
 ```
-$GLOBALS = wfArray::setUnset($GLOBALS, 'sys/settings/events/document_render_string');
+$GLOBALS['sys'] = wfArray::setUnset($GLOBALS['sys'], 'settings/events/document_render_string');
 ```
 
 Unset for an element and it´s child elements.
