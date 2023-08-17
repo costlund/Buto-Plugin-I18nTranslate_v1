@@ -1,89 +1,93 @@
-version: 1.12.1
+version: 1.13.0
 history:
+  1.13.0:
+    date: '2023-08-17'
+    title: 'PHP 8.2'
+    description: 'Changes according to PHP version 8.2.'
   1.12.1:
     date: '2023-08-08'
     title: 'PHP version 8.2'
     description: 'Adjustments according to PHP version 8.2.'
   1.12.0:
-    date: '2023-07-28' 
+    date: '2023-07-28'
     title: 'Link element'
     description: 'Add span element to link elements in method event_translate_string.'
   1.11.0:
-    date: '2023-05-22' 
-    title: 'Links'
+    date: '2023-05-22'
+    title: Links
     description: 'Create links in method event_translate_string from file _links.yml in i18n folder.'
   1.10.0:
-    date: '2022-12-01' 
-    title: 'Event'
+    date: '2022-12-01'
+    title: Event
     description: 'Add event translate_title.'
   1.9.0:
-    date: '2022-09-08' 
+    date: '2022-09-08'
     title: 'Method getData'
     description: 'One could pass language (optional) if not want to use current user language.'
   1.8.0:
-    date: '2022-09-07' 
+    date: '2022-09-07'
     title: 'Skip translation'
     description: 'Skip translation begins with a number and is time (method event_translate_string_issue).'
   1.7.8:
-    date: '2022-05-03' 
+    date: '2022-05-03'
     title: 'Skip translation'
     description: 'Skip translation if text begin with "load:"". Readme improvements.'
   1.7.7:
-    date: '2021-10-24' 
+    date: '2021-10-24'
     title: 'Short text'
     description: 'Skip translation if text are shorter than 2.'
   1.7.6:
-    date: '2021-09-30' 
-    title: 'Email'
+    date: '2021-09-30'
+    title: Email
     description: 'Skip translation if email.'
   1.7.5:
-    date: '2021-09-30' 
-    title: 'Date'
+    date: '2021-09-30'
+    title: Date
     description: 'Skip translation if date.'
   1.7.4:
-    date: '2021-09-30' 
+    date: '2021-09-30'
     title: 'Short text'
     description: 'Skip translation if text are shorter than 3.'
   1.7.3:
-    date: '2021-09-30' 
+    date: '2021-09-30'
     title: I18N
-    description: "Skip log if innerHTML has (')."
+    description: 'Skip log if innerHTML has ('').'
   1.7.2:
-    date: '2021-08-26' 
+    date: '2021-08-26'
     title: I18N
     description: 'Skip log if innerHTML is empty.'
   1.7.1:
-    date: '2021-08-20' 
+    date: '2021-08-20'
     title: Character
     description: 'Skip translate if first character is &.'
   1.7.0:
-    date: '2019-11-27' 
+    date: '2019-11-27'
     title: Path
-    description: New method setPath on object param.
+    description: 'New method setPath on object param.'
   1.6.0:
-    date: '2019-08-09' 
-    description: Disable translation.
+    date: '2019-08-09'
+    description: 'Disable translation.'
   1.5.0:
-    date: '2019-05-14' 
-    description: Set path in Globals.
+    date: '2019-05-14'
+    description: 'Set path in Globals.'
   1.4.0:
-    date: '2019-04-29' 
-    description: Path to files.
+    date: '2019-04-29'
+    description: 'Path to files.'
   1.3.1:
-    date: '2018-11-29' 
+    date: '2018-11-29'
     description: Documentation.
   1.3.0:
-    date: '2018-11-27' 
-    description: Log improvement.
+    date: '2018-11-27'
+    description: 'Log improvement.'
   1.2.0:
-    date: '2018-11-27' 
-    description: Update log method to replace slash.
+    date: '2018-11-27'
+    description: 'Update log method to replace slash.'
   1.1.0:
-    date: '2018-11-01' 
+    date: '2018-11-01'
     description: Improvement.
   1.0.0:
-    date: '2018-11-01' 
-    description: First version.
+    date: '2018-11-01'
+    description: 'First version.'
 plugin: {  }
 sys:
   -

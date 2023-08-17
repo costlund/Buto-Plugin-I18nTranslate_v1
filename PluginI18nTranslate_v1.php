@@ -22,9 +22,9 @@ class PluginI18nTranslate_v1{
         if(isset($v['target'])){
           $target = ' target="'.$v['target'].'"';
         }
-        $string = str_replace($k, '<a href="'.$href.'"'.$target.'>'.substr($k, 0, 1).$scramble.substr($k, 1).'</a>', $string);
+        $string = wfPhpfunc::str_replace($k, '<a href="'.$href.'"'.$target.'>'.substr($k, 0, 1).$scramble.substr($k, 1).'</a>', $string);
       }
-      $string = str_replace($scramble, '', $string);
+      $string = wfPhpfunc::str_replace($scramble, '', $string);
     }
     /**
      * 
@@ -42,29 +42,29 @@ class PluginI18nTranslate_v1{
       foreach($array as $k => $v){
         $str .= ' - '.$i18n->translateFromTheme($v);
       }
-      $data['innerHTML'] = substr($str, 3);
+      $data['innerHTML'] = wfPhpfunc::substr($str, 3);
       $data['settings']['i18n'] = false;
     }
     return $data;
   }
   public static function event_translate_string_issue($string){
-    if(is_numeric(str_replace(array('.', '-'), '', $string))){
+    if(is_numeric(wfPhpfunc::str_replace(array('.', '-'), '', $string))){
       return true;
-    }elseif(strlen($string)<=1){
+    }elseif(wfPhpfunc::strlen($string)<=1){
       return true;
-    }elseif(strstr($string, '<')){
+    }elseif(wfPhpfunc::strstr($string, '<')){
       return true;
-    }elseif(strstr($string, 'item[{')){
+    }elseif(wfPhpfunc::strstr($string, 'item[{')){
       return true;
-    }elseif(strstr($string, "\n")){
+    }elseif(wfPhpfunc::strstr($string, "\n")){
       return true;
-    }elseif(substr($string, 0, 1)=='&'){
+    }elseif(wfPhpfunc::substr($string, 0, 1)=='&'){
       return true;
-    }elseif(is_numeric(substr($string, 0, 1)) && strtotime(substr($string, 0, 10))){
+    }elseif(is_numeric(wfPhpfunc::substr($string, 0, 1)) && strtotime(wfPhpfunc::substr($string, 0, 10))){
       return true;
     }elseif(filter_var($string, FILTER_VALIDATE_EMAIL)){
       return true;
-    }elseif(substr($string, 0, 5)=='load:'){
+    }elseif(wfPhpfunc::substr($string, 0, 5)=='load:'){
       return true;
     }else{
       return false;
@@ -110,7 +110,7 @@ class PluginI18nTranslate_v1{
        */
       if(wfConfig::get('plugin/i18n/translate_v1/settings/log')){
         $log = true;
-        if(wfConfig::get('plugin/i18n/translate_v1/settings/log_domain_filter') && !strstr(wfServer::getServerName(), wfConfig::get('plugin/i18n/translate_v1/settings/log_domain_filter'))){
+        if(wfConfig::get('plugin/i18n/translate_v1/settings/log_domain_filter') && !wfPhpfunc::strstr(wfServer::getServerName(), wfConfig::get('plugin/i18n/translate_v1/settings/log_domain_filter'))){
           $log = false;
         }
         if($log){
@@ -125,7 +125,7 @@ class PluginI18nTranslate_v1{
      */
     if($replace){
       foreach ($replace as $key => $value) {
-        $innerHTML = str_replace($key, $value, $innerHTML);
+        $innerHTML = wfPhpfunc::str_replace($key, $value, $innerHTML);
       }
     }
     return $innerHTML;
@@ -215,7 +215,7 @@ class PluginI18nTranslate_v1{
     /**
      * Replace slash.
      */
-    $innerHTML = str_replace('/', '%slash%', $innerHTML);
+    $innerHTML = wfPhpfunc::str_replace('/', '%slash%', $innerHTML);
     /**
      * 
      */
@@ -229,7 +229,7 @@ class PluginI18nTranslate_v1{
   private function log_issue($innerHTML){
     if(!$innerHTML){
       return true;
-    }elseif(strstr($innerHTML, "'")){
+    }elseif(wfPhpfunc::strstr($innerHTML, "'")){
       return true;
     }else{
       return false;
