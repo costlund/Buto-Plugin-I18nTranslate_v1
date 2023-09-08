@@ -25,7 +25,7 @@ events:
 Translate title element with hyphen between "One - Two".
 ```
 events:
-  document_render_string:
+  document_render_title:
     -
       plugin: i18n/translate_v1
       method: translate_title

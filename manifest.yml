@@ -1,5 +1,9 @@
-version: 1.13.0
+version: 1.13.1
 history:
+  1.13.1:
+    date: '2023-09-08'
+    title: 'Readme'
+    description: 'Improvements.'
   1.13.0:
     date: '2023-08-17'
     title: 'PHP 8.2'
