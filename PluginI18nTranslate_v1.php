@@ -125,6 +125,9 @@ class PluginI18nTranslate_v1{
      */
     if($replace){
       foreach ($replace as $key => $value) {
+        if(is_array($value)){
+          continue;
+        }
         $innerHTML = wfPhpfunc::str_replace($key, $value, $innerHTML);
       }
     }
