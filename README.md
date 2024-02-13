@@ -153,5 +153,6 @@ Works on following elements.
 - div
 - li
 - span
+- small
 
 

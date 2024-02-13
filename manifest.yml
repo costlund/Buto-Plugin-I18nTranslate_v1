@@ -1,5 +1,9 @@
-version: 1.13.2
+version: 1.13.3
 history:
+  1.13.3:
+    date: '2024-02-13'
+    title: 'Element small'
+    description: 'Add element small to method event_translate_string.'
   1.13.2:
     date: '2023-10-24'
     title: 'Replace'
